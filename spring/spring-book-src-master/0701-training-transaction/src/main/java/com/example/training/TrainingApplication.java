@@ -52,9 +52,9 @@ public class TrainingApplication {
         ReservationService reservationService = context.getBean(ReservationService.class);
 
         ReservationInput reservationInput = new ReservationInput();
-        reservationInput.setName("김철수");
+        reservationInput.setName("노기봉");
         reservationInput.setPhone("010-0000-0000");
-        reservationInput.setEmailAddress("taro@example.com");
+        reservationInput.setEmailAddress("rohgibong@example.com");
         reservationInput.setStudentTypeCode("FREELANCE");
         reservationInput.setTrainingId("t01");
 
