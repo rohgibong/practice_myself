@@ -4,10 +4,13 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.training.entity.AuditLog;
 import com.example.training.repository.AuditLogRepository;
+
+import static org.springframework.transaction.annotation.Propagation.*;
 
 @Service
 public class AuditLogServiceImpl implements AuditLogService {
@@ -18,7 +21,7 @@ public class AuditLogServiceImpl implements AuditLogService {
         this.auditLogRepository = auditLogRepository;
     }
 
-    @Transactional
+    @Transactional (propagation = REQUIRES_NEW)
     @Override
     public void registerLog(String  functionName) {
         AuditLog auditLog = new AuditLog();
