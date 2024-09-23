@@ -4,37 +4,18 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        int finalRollCount = 1;
-        Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 
-        String roomNumber = scanner.nextLine();
-        String numbers[] = roomNumber.split("");
+        int packCount = -1;
+        int sugar = Integer.parseInt(sc.nextLine());
 
-        for(int count = 1; count < numbers.length; count++){
-            int newRollCount = 1;
-            if(numbers[count-1].equals("6") || numbers[count-1].equals("9")){
-                int sixNineCount = 0;
-                for(int i = count; i < numbers.length; i++){
-                    if(numbers[i].equals("6") || numbers[i].equals("9")){
-                        sixNineCount++;
-                    }
-                    if(sixNineCount == 2){
-                        newRollCount++;
-                        sixNineCount = 0;
-                    }
-                }
-            } else {
-                for(int i = count; i < numbers.length; i++){
-                    if(numbers[i].equals(numbers[count-1])){
-                        newRollCount++;
-                    }
-                }
-            }
-            if(newRollCount > finalRollCount){
-                finalRollCount = newRollCount;
+        for(int i = sugar/5; i>=0; i--){
+            if((sugar - (i*5)) % 3 == 0 ){
+                packCount = i + ((sugar - (i*5)) / 3);
+                break;
             }
         }
 
-        System.out.println(finalRollCount);
+        System.out.println(sugar == 3 ? 1 : packCount);
     }
 }
